@@ -1,31 +1,31 @@
+package HomeWorkSeleniumWebDriverAdvanced;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class NotificationMessages {
+public class FileUpload {
 
-    WebElement driver;
+    WebDriver driver;
 
     @Test
-    public void testNotificationMessages() {
+    public void testFileUpload() {
+
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("http://the-internet.herokuapp.com/notification_message_rendered");
+        driver.get("http://the-internet.herokuapp.com/upload");
 
-        WebElement test = driver.findElement(By.xpath("//html/body/div[2]/div/div/p/a"));
-        test.click();
-        WebElement flash = driver.findElement(By.id("flash"));
-        flash.getText();
-        Assert.assertEquals(flash.getText(), "Action unsuccessful, please try again\n" + "×");
+        WebElement fileUpload = driver.findElement(By.id("file-upload"));
+        fileUpload.sendKeys(System.getProperty("user.dir") + "/src/img/monkey-selfie_custom-7117031c832fc3607ee5b26b9d5b03d10a1deaca-s1100-c50.jpg");
         driver.quit();
     }
 }
