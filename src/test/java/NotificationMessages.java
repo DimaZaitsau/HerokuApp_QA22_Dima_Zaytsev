@@ -21,11 +21,11 @@ public class NotificationMessages {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://the-internet.herokuapp.com/notification_message_rendered");
 
-        WebElement test = driver.findElement(By.xpath("//html/body/div[2]/div/div/p/a"));
+        WebElement test = driver.findElement(By.xpath("//a[text()='Click here']"));
         test.click();
         WebElement flash = driver.findElement(By.id("flash"));
         flash.getText();
-        Assert.assertEquals(flash.getText(), "Action unsuccessful, please try again\n" + "×");
+        Assert.assertEquals(flash.getText(), "Action successful\n" + "×");
         driver.quit();
     }
 }

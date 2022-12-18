@@ -19,14 +19,10 @@ public class Frames {
     public void testFrames()    {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
-        WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("http://the-internet.herokuapp.com/frames");
+        driver.get("http://the-internet.herokuapp.com/iframe");
 
-        WebElement text = driver.findElement(By.xpath("//a[text()='iFrame']"));
-        text.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".example")));
         driver.switchTo().frame("mce_0_ifr");
         WebElement myContent = driver.findElement(By.xpath("//p[text()='Your content goes here.']"));
         myContent.getText();

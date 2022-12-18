@@ -27,7 +27,6 @@ public class FileDownload {
         options.setExperimentalOption("prefs", chromePrefs);
         driver = new ChromeDriver(options);
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://the-internet.herokuapp.com/download");
@@ -53,7 +52,6 @@ public class FileDownload {
         }
         Assert.assertTrue(found, "Download document is not found");
         downloadFile.deleteOnExit();
-
 
         driver.quit();
     }

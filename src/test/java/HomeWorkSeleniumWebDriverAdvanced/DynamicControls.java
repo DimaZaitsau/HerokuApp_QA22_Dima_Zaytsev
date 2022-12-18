@@ -26,13 +26,11 @@ public class DynamicControls {
         driver.get("http://the-internet.herokuapp.com/dynamic_controls");
 
         List<WebElement> checkbox = driver.findElements(By.xpath("//input[@label='blah']"));
-        checkbox.size();
         Assert.assertEquals(checkbox.size(), 1);
         WebElement removeButton = driver.findElement(By.xpath("//button[text()='Remove']"));
         removeButton.click();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("checkbox")));
         WebElement text = driver.findElement(By.id("message"));
-        text.getText();
         Assert.assertEquals(text.getText(), "It's gone!");
 
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);

@@ -24,7 +24,6 @@ public class ContextMenu {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         Actions actions = new Actions(driver);
-        WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://the-internet.herokuapp.com/context_menu");
